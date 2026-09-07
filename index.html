@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JYL Bolsas de Publicidad | Bolsas Mandaderas Personalizadas</title>
+<meta name="description" content="Bolsas mandaderas publicitarias personalizadas para tiendas, mercados, cremerías y negocios. Diseños personalizados y pedidos desde 50 piezas.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="JYL Bolsas de Publicidad | Bolsas Mandaderas Personalizadas">
+<meta property="og:description" content="Bolsas mandaderas publicitarias personalizadas para tiendas, mercados, cremerías y negocios. Diseños personalizados y pedidos desde 50 piezas.">
+<meta property="og:type" content="website">
+
+<!-- Favicon (logo de JYL) -->
+<link rel="icon" id="favicon" href="https://i.imgur.com/CbNunP3.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   VARIABLES DE COLOR — cambia aquí toda la identidad visual
+   ========================================================= */
+:root{
+  --color-principal:#2457C5;
+  --color-principal-oscuro:#173d94;
+  --color-secundario:#12203b;
+  --color-precio:#12203b;
+  --color-acento:#F4A100;
+  --color-fondo:#ffffff;
+  --color-fondo-alterno:#F6F8FC;
+  --color-tarjeta:#F2EFE9;
+  --color-header-bg:rgba(255,255,255,.92);
+  --color-texto:#12203b;
+  --color-texto-secundario:#5b6779;
+  --color-borde:#e4e8f0;
+  --color-placeholder-1:#eef1f7;
+  --color-placeholder-2:#e4e8f0;
+  --color-visor-fondo:#d3d3d3;
+  --radio:14px;
+  --sombra:0 10px 30px rgba(18,32,59,0.08);
+}
+
+/* MODO OSCURO — se activa solo si el dispositivo/navegador del visitante
+   lo tiene activado. Cambia estas variables si quieres ajustar los tonos. */
+@media (prefers-color-scheme: dark){
+  :root{
+    --color-fondo:#0f141d;
+    --color-fondo-alterno:#161c28;
+    --color-tarjeta:#1a2130;
+    --color-header-bg:rgba(15,20,29,.9);
+    --color-texto:#eef1f7;
+    --color-texto-secundario:#a3adc2;
+    --color-borde:#2a3244;
+    --color-placeholder-1:#1e2536;
+    --color-placeholder-2:#242c40;
+    --color-precio:#f4f6fb;
+    --sombra:0 10px 30px rgba(0,0,0,0.45);
+  }
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--color-texto);
+  background:var(--color-fondo);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.font-display{font-family:'Poppins',sans-serif;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+section{padding:80px 20px;}
+.contenedor{max-width:1140px;margin:0 auto;}
+.centro{text-align:center;}
+.etiqueta{
+  display:inline-block;color:var(--color-principal);font-weight:600;
+  letter-spacing:.5px;text-transform:uppercase;font-size:13px;margin-bottom:10px;
+}
+.titulo-seccion{font-size:clamp(26px,4vw,38px);font-weight:700;margin-bottom:14px;}
+.subtitulo-seccion{color:var(--color-texto-secundario);font-size:17px;max-width:640px;margin:0 auto;}
+.alterno{background:var(--color-fondo-alterno);}
+
+/* Botones */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;
+  cursor:pointer;border:none;transition:transform .15s ease, box-shadow .15s ease;
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primario{background:var(--color-acento);color:#1a1a1a;box-shadow:0 8px 20px rgba(244,161,0,.35);}
+.btn-secundario{background:transparent;color:var(--color-principal);border:2px solid var(--color-principal);}
+.btn-oscuro{background:var(--color-principal);color:#fff;box-shadow:0 8px 20px rgba(36,87,197,.3);}
+.btn-grande{padding:18px 34px;font-size:17px;}
+.btn-ancho{width:100%;}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:1000;background:var(--color-header-bg);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--color-borde);
+}
+.header-inner{
+  max-width:1140px;margin:0 auto;padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--color-texto);font-family:'Poppins',sans-serif;min-width:0;}
+.logo span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.logo img{height:56px;width:auto;}
+nav.menu-principal{display:flex;align-items:center;gap:30px;}
+nav.menu-principal a{font-weight:500;font-size:15px;color:var(--color-texto);}
+nav.menu-principal a:hover{color:var(--color-principal);}
+.header-derecha{display:flex;align-items:center;gap:16px;}
+.btn-hamburguesa{display:none;background:none;border:none;cursor:pointer;font-size:26px;color:var(--color-texto);}
+.menu-movil{display:none;flex-direction:column;gap:0;background:var(--color-fondo);border-top:1px solid var(--color-borde);}
+.menu-movil a{padding:16px 20px;border-bottom:1px solid var(--color-borde);font-weight:500;}
+.menu-movil.activo{display:flex;}
+
+/* HERO */
+.hero{padding:70px 20px;}
+.hero-grid{max-width:760px;margin:0 auto;text-align:center;}
+.hero h1{font-size:clamp(30px,4.2vw,46px);font-weight:800;line-height:1.15;margin-bottom:18px;color:var(--color-texto);}
+.hero .subtitulo{font-size:19px;font-weight:600;color:var(--color-principal);margin-bottom:14px;}
+.hero p{color:var(--color-texto-secundario);font-size:16px;margin-bottom:28px;}
+.hero-botones{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:34px;}
+.beneficios-rapidos{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:480px;margin:0 auto;}
+.beneficio-rapido{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--color-texto);}
+.beneficio-rapido .check{color:var(--color-principal);font-weight:800;}
+
+/* CONFIANZA */
+.confianza-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.confianza-numero{font-size:52px;font-weight:800;color:var(--color-principal);font-family:'Poppins',sans-serif;}
+.confianza-numero span{display:block;font-size:16px;font-weight:600;color:var(--color-texto-secundario);margin-top:4px;}
+.beneficios-lista{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;}
+.beneficio-item h4{font-size:16px;margin-bottom:6px;}
+.beneficio-item p{font-size:14px;color:var(--color-texto-secundario);}
+
+/* GRID GENERAL DE TARJETAS */
+.grid-tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;margin-top:44px;}
+
+/* PRODUCTOS */
+.tarjeta-producto{
+  background:var(--color-tarjeta);border:1px solid var(--color-borde);border-radius:var(--radio);
+  overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column;
+}
+.tarjeta-producto-cuerpo{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.tarjeta-producto h3{font-size:19px;}
+.tarjeta-producto .descripcion{color:var(--color-texto-secundario);font-size:14px;}
+.tarjeta-producto .info-linea{font-size:13px;color:var(--color-texto-secundario);}
+.tarjeta-producto .precio{font-size:22px;font-weight:800;color:var(--color-precio);margin-top:6px;}
+.tarjeta-producto .precio small{font-size:13px;font-weight:500;color:var(--color-texto-secundario);}
+.tarjeta-producto .btn{margin-top:auto;}
+
+/* VISOR DE CAPAS (imagen que cambia de color) */
+.visor-producto{
+  position:relative;width:100%;aspect-ratio:4/3;max-height:260px;overflow:hidden;
+  background:var(--color-visor-fondo);cursor:zoom-in;
+}
+.visor-producto img,.visor-producto .placeholder-imagen{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+}
+/* capa-color: se recorta con la máscara y se pinta con el color elegido (queda al fondo) */
+.capa-color{
+  position:absolute;inset:0;z-index:1;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-size:contain;mask-size:contain;
+  -webkit-mask-position:center;mask-position:center;
+  mix-blend-mode:multiply;
+  transition:background-color .2s ease;
+}
+/* capa-transparencia: brillos, sombras y reflejos por encima del color */
+.capa-transparencia{z-index:2;mix-blend-mode:overlay;pointer-events:none;}
+/* capa-asa: el asa siempre queda encima y no cambia de color */
+.capa-asa{z-index:3;pointer-events:none;}
+
+.btn-vista-previa{
+  align-self:flex-start;background:var(--color-fondo-alterno);color:var(--color-principal);
+  border:1px solid var(--color-borde);border-radius:999px;padding:9px 18px;font-weight:600;
+  font-size:13px;cursor:pointer;transition:background .15s ease;
+}
+.btn-vista-previa:hover{background:var(--color-borde);}
+.selector-colores{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0;}
+.selector-colores.oculto,.color-seleccionado-texto.oculto{display:none;}
+
+/* LIGHTBOX — imagen del modelo ampliada */
+.lightbox-overlay{
+  position:fixed;inset:0;z-index:2000;background:rgba(10,14,22,.85);
+  display:none;align-items:center;justify-content:center;padding:30px;
+  cursor:zoom-out;
+}
+.lightbox-overlay.visible{display:flex;}
+.lightbox-contenido{
+  position:relative;width:min(600px,90vw);aspect-ratio:4/3;
+  background:var(--color-visor-fondo);border-radius:var(--radio);overflow:hidden;
+  cursor:default;box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.lightbox-contenido .visor-producto{max-height:none;cursor:default;}
+.lightbox-cerrar{
+  position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;
+  font-size:32px;line-height:1;cursor:pointer;padding:6px;
+}
+
+/* AVISO / MENSAJE FLOTANTE EN PANTALLA */
+.aviso-flotante{
+  position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);
+  background:var(--color-secundario);color:#fff;padding:14px 22px;border-radius:999px;
+  font-size:14px;font-weight:600;box-shadow:0 10px 30px rgba(18,32,59,.3);
+  z-index:2000;opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;
+  max-width:90vw;text-align:center;
+}
+.aviso-flotante.visible{opacity:1;transform:translateX(-50%) translateY(0);}
+.boton-color{
+  width:24px;height:24px;border-radius:50%;border:2px solid #fff;
+  box-shadow:0 0 0 1px var(--color-borde);cursor:pointer;padding:0;transition:box-shadow .15s ease,transform .15s ease;
+}
+.boton-color:hover{transform:scale(1.08);}
+.boton-color.activo{box-shadow:0 0 0 2px var(--color-principal);}
+.color-seleccionado-texto{font-size:13px;color:var(--color-texto-secundario);}
+.color-seleccionado-texto strong{color:var(--color-texto);}
+
+/* PRECIOS */
+.tabla-precios{width:100%;border-collapse:collapse;margin-top:40px;background:var(--color-tarjeta);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);}
+.tabla-precios th,.tabla-precios td{padding:16px 18px;text-align:center;border-bottom:1px solid var(--color-borde);font-size:14px;}
+.tabla-precios th{background:var(--color-secundario);color:#fff;font-weight:600;}
+.tabla-precios td:first-child,.tabla-precios th:first-child{text-align:left;font-weight:600;}
+.tabla-precios tr:last-child td{border-bottom:none;}
+.nota-precios{margin-top:18px;font-size:13px;color:var(--color-texto-secundario);text-align:center;}
+
+/* GALERÍA */
+.tarjeta-galeria{border-radius:var(--radio);overflow:hidden;position:relative;box-shadow:var(--sombra);aspect-ratio:1/1;max-height:280px;margin:0 auto;width:100%;}
+.tarjeta-galeria img,.tarjeta-galeria .placeholder-imagen{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.tarjeta-galeria .etiqueta-galeria{
+  position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
+  background:linear-gradient(0deg,rgba(18,32,59,.85),transparent);color:#fff;
+}
+.tarjeta-galeria .etiqueta-galeria strong{display:block;font-size:15px;}
+.tarjeta-galeria .etiqueta-galeria span{font-size:12px;opacity:.85;}
+
+/* BENEFICIO PUBLICITARIO */
+.beneficio-pub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px;}
+.beneficio-pub-item{background:var(--color-tarjeta);border:1px solid var(--color-borde);border-radius:var(--radio);padding:28px;}
+.beneficio-pub-item .numero-icono{
+  width:44px;height:44px;border-radius:50%;background:var(--color-fondo-alterno);
+  display:flex;align-items:center;justify-content:center;color:var(--color-principal);font-weight:800;margin-bottom:14px;
+}
+
+/* PROCESO */
+.proceso-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:44px;}
+.paso-proceso{position:relative;padding-left:0;}
+.paso-proceso .numero{
+  font-family:'Poppins',sans-serif;font-size:34px;font-weight:800;color:var(--color-principal);opacity:.35;
+}
+.paso-proceso h4{font-size:17px;margin:6px 0 8px;}
+.paso-proceso p{font-size:14px;color:var(--color-texto-secundario);}
+
+/* TESTIMONIOS */
+.tarjeta-testimonio{
+  background:var(--color-tarjeta);border:1px solid var(--color-borde);border-radius:var(--radio);
+  padding:26px;box-shadow:var(--sombra);
+}
+.tarjeta-testimonio .texto{font-style:italic;color:var(--color-texto);margin-bottom:16px;font-size:15px;}
+.tarjeta-testimonio .autor{display:flex;align-items:center;gap:12px;}
+.avatar-testimonio{position:relative;width:44px;height:44px;border-radius:50%;overflow:hidden;background:var(--color-fondo-alterno);flex-shrink:0;}
+.avatar-testimonio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.tarjeta-testimonio .autor strong{display:block;font-size:14px;}
+.tarjeta-testimonio .autor span{font-size:13px;color:var(--color-texto-secundario);}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--color-borde);}
+.faq-pregunta{
+  width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  padding:20px 4px;display:flex;justify-content:space-between;align-items:center;
+  font-size:16px;font-weight:600;color:var(--color-texto);
+}
+.faq-pregunta .icono-faq{font-size:22px;color:var(--color-principal);transition:transform .2s ease;flex-shrink:0;margin-left:12px;}
+.faq-item.abierto .icono-faq{transform:rotate(45deg);}
+.faq-respuesta{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+.faq-respuesta p{padding:0 4px 20px;color:var(--color-texto-secundario);font-size:14px;}
+
+/* CTA FINAL */
+.cta-final{
+  background:linear-gradient(135deg,var(--color-principal),var(--color-principal-oscuro));
+  color:#fff;border-radius:var(--radio);padding:60px 30px;text-align:center;
+  max-width:1140px;margin:0 auto;
+}
+.cta-final h2{color:#fff;}
+.cta-final p{color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 30px;}
+
+/* FOOTER */
+footer{background:var(--color-secundario);color:rgba(255,255,255,.75);padding:50px 20px 24px;}
+.footer-inner{max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;}
+.footer-marca{max-width:320px;}
+.footer-marca .logo{color:#fff;margin-bottom:10px;}
+.footer-links{display:flex;gap:40px;flex-wrap:wrap;}
+.footer-links h5{color:#fff;font-size:14px;margin-bottom:14px;}
+.footer-links a{display:block;font-size:14px;margin-bottom:10px;color:rgba(255,255,255,.7);}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{max-width:1140px;margin:30px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;text-align:center;color:rgba(255,255,255,.5);}
+
+/* BOTÓN FLOTANTE WHATSAPP */
+.whatsapp-flotante{
+  position:fixed;bottom:22px;right:22px;z-index:1500;
+  width:60px;height:60px;border-radius:50%;background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+.whatsapp-flotante svg{width:30px;height:30px;fill:#fff;}
+
+/* PLACEHOLDER DE IMAGEN */
+.placeholder-imagen{
+  width:100%;height:100%;min-height:180px;display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg,var(--color-placeholder-1),var(--color-placeholder-1) 10px,var(--color-placeholder-2) 10px,var(--color-placeholder-2) 20px);
+  color:var(--color-texto-secundario);font-size:13px;font-weight:600;text-align:center;padding:10px;
+}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .confianza-grid{grid-template-columns:1fr;gap:30px;}
+  .beneficio-pub-grid,.proceso-grid{grid-template-columns:1fr;}
+  nav.menu-principal{display:none;}
+  .btn-hamburguesa{display:block;}
+}
+@media (max-width:600px){
+  section{padding:56px 16px;}
+  .beneficios-rapidos{grid-template-columns:1fr;}
+  .beneficios-lista{grid-template-columns:1fr;}
+  .hero-botones .btn{flex:1;}
+  .tabla-precios{font-size:12px;}
+  .tabla-precios th,.tabla-precios td{padding:10px 8px;}
+  .logo{font-size:16px;gap:8px;}
+  .logo img{height:44px;}
+  :root{--color-tarjeta:#ffffff;}
+}
+@media (max-width:380px){
+  .header-inner{padding:12px 14px;}
+  .logo{font-size:14px;gap:6px;}
+  .logo img{height:38px;}
+  .header-derecha{gap:8px;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- =========================================================================
+     CONFIGURACIÓN DE JYL
+     ---------------------------------------------------------------
+     AQUÍ ESTÁ TODO LO QUE PROBABLEMENTE NECESITES CAMBIAR:
+     nombre, WhatsApp, Facebook, correo, textos, imágenes, modelos,
+     precios, galería, testimonios y preguntas frecuentes.
+
+     No necesitas tocar nada de HTML/CSS de abajo: solo modifica
+     los valores dentro de este bloque "configuracion".
+     ========================================================================= -->
+<script>
+const configuracion = {
+
+  // -----------------------------------------------------------------
+  // DATOS DEL NEGOCIO
+  // -----------------------------------------------------------------
+  negocio: {
+    nombre: "JYL Bolsas de Publicidad",
+    // CAMBIA AQUÍ EL NÚMERO DE WHATSAPP (con código de país, solo números, ej: 521234567890)
+    whatsapp: "525558570110",
+    // CAMBIA AQUÍ TU FACEBOOK (deja "" si no quieres mostrar el ícono)
+    facebook: "https://www.facebook.com/share/1HuDPWgAxG/",
+    // CAMBIA AQUÍ TU INSTAGRAM
+    instagram: "https://www.instagram.com/jyl_bolsaspublicitarias?utm_source=qr&igsh=d2d0dHgxdTE0dGQy",
+    // Mensaje que se manda automáticamente al presionar cualquier botón de WhatsApp
+    mensajeWhatsApp: "¡Hola, J&L Bolsas de pucidad! Vengo de la pagina Web y quiero información sobre las bolsas personalizadas.",
+    // Pon en false si quieres QUITAR el botón flotante de WhatsApp
+    mostrarBotonFlotante: true
+  },
+
+  // -----------------------------------------------------------------
+  // TEXTOS PRINCIPALES
+  // -----------------------------------------------------------------
+  textos: {
+    tituloPrincipal: "Haz que tus clientes recuerden tu negocio",
+    subtituloHero: "Bolsas personalizadas para tiendas, mercados y negocios.",
+    textoHero: "Tu marca puede acompañar a tus clientes todos los días. Creamos bolsas personalizadas para que tu negocio se vea profesional y sea más fácil de recordar.",
+
+    tituloConfianza: "¿Por qué confiar en JYL?",
+    numeroAniosExperiencia: "30", // CAMBIA AQUÍ el número de años de experiencia
+    textoConfianza: "Tenemos experiencia trabajando con comerciantes y negocios que necesitan bolsas prácticas, resistentes y personalizadas para entregar sus productos y promocionar su negocio.",
+
+    tituloEnvios: "[AGREGAR INFORMACIÓN REAL SOBRE ENVÍOS]" // usado en la pregunta frecuente de envíos
+  },
+
+  // -----------------------------------------------------------------
+  // IMÁGENES — pega aquí la URL de cada foto (o deja el placeholder)
+  // (nota: "principal" ya no se usa porque se quitó la imagen del inicio)
+  // -----------------------------------------------------------------
+  imagenes: {
+    // CAMBIA AQUÍ EL LOGO
+    logo: "https://i.imgur.com/CbNunP3.png",
+    // CAMBIA AQUÍ LA FOTO PRINCIPAL DEL HERO
+    principal: "https://i.imgur.com/pgtdMlU.png"
+  },
+
+  // -----------------------------------------------------------------
+  // MODELOS / PRODUCTOS
+  // Para AGREGAR un modelo: copia un bloque { ... } completo y pégalo
+  //   dentro de los corchetes [ ], separado por una coma.
+  // Para ELIMINAR un modelo: borra su bloque { ... } completo.
+  //
+  // "capas" es lo que permite que la bolsa cambie de color al pulsar
+  // un color. Necesitas 3 imágenes PNG (con fondo TRANSPARENTE) del
+  // mismo tamaño, recortadas exactamente igual, una encima de otra
+  // (ya NO se usa una foto de catálogo: la bolsa se pinta directamente
+  // con el color, empezando con el primer color de la lista):
+  //
+  //   mascara       -> SOLO la silueta de la parte de tela que se
+  //                     debe pintar: blanco sólido donde va el color,
+  //                     y transparente en todo lo demás (asa, sombras,
+  //                     logo, etc.). Es la que le da la forma a la bolsa.
+  //   transparencia -> brillos, sombras y reflejos de la bolsa, en un
+  //                     PNG transparente, para que se sigan viendo
+  //                     encima del color.
+  //   asa           -> el asa/mango de la bolsa (y cualquier parte que
+  //                     NUNCA deba cambiar de color), en PNG
+  //                     transparente, para que quede siempre encima.
+  //
+  // Si todavía no tienes "mascara", deja las 3 vacías ("") y la
+  // tarjeta mostrará un espacio de "[COLOCAR FOTO AQUÍ]" mientras
+  // preparas las imágenes.
+  //
+  // "colores" es una lista de { hex, nombre }: "hex" es el color que
+  // se pinta y "nombre" es lo que se muestra y se manda por WhatsApp.
+  // Puedes agregar TODOS los colores que quieras ofrecer en este modelo,
+  // sin límite. El PRIMER color de la lista es el que se pinta por
+  // defecto al cargar la página.
+  // El límite es para el CLIENTE que visita la página: puede elegir
+  // (tocando los círculos) hasta 5 colores para su pedido; si intenta
+  // elegir un sexto color, no pasa nada hasta que quite uno de los
+  // que ya eligió.
+  // -----------------------------------------------------------------
+  productos: [
+    {
+      nombre: "Grande Clasica",
+      descripcion: "Bolsa resistente ideal para tiendas de abarrotes y mercados.",
+      capas: {
+        mascara: "https://i.imgur.com/VpJ8o71.png",
+        transparencia: "https://i.imgur.com/JM6NU9B.png",
+        asa: "https://i.imgur.com/2cb2BsW.png"
+      },
+      colores: [
+        { hex: "#b81414", nombre: "Rojo" },
+        { hex: "#22409A", nombre: "A.Rey" },
+        { hex: "#008000", nombre: "V.Bandera" },
+        { hex: "#e83375", nombre: "Fiusha" },
+        { hex: "#B38CDC", nombre: "Lila" },
+        { hex: "#0076b6", nombre: "Panam" },
+        { hex: "#89d631", nombre: "Verde Manzana" },
+        { hex: "#E6AB00", nombre: "Amarillo Mango" },
+        { hex: "#1B1B1B", nombre: "Negro" },
+        { hex: "#89F336", nombre: "Verde Limón" },
+        { hex: "#fdfe02", nombre: "Amarillo Canario" },
+        { hex: "#E5679B", nombre: "Rosa Neón" },
+        { hex: "#fc4b08", nombre: "Naranja Neón" },
+        { hex: "#de6749", nombre: "Naranja Mandarina" },
+        { hex: "#FFC5D3", nombre: "Rosa Pastel" },
+        { hex: "#F8F8FF", nombre: "Blanco" },
+        { hex: "#341539", nombre: "Uva" },
+        { hex: "#00fff0", nombre: "Aqua" },
+        { hex: "#722F37", nombre: "Vino" },
+        { hex: "#e2cbb0", nombre: "Beige" }
+      ],
+      pedidoMinimo: 50,
+      precioDesde: "27",
+      whatsappTexto: "Hola, quiero cotizar el Modelo Grande Clasica."
+    },
+    {
+      nombre: "Mediana Clasica",
+      descripcion: "Diseño reforzado, perfecta para cremerías y jarcerías.",
+      capas: {
+        mascara: "https://i.imgur.com/2Z6EpgA.png",
+        transparencia: "https://i.imgur.com/AdWYnWW.png",
+        asa: "https://i.imgur.com/tgTqDBJ.png"
+      },
+      colores: [
+        { hex: "#22409A", nombre: "A.Rey" },
+        { hex: "#b81414", nombre: "Rojo" },
+        { hex: "#008000", nombre: "V.Bandera" },
+        { hex: "#e83375", nombre: "Fiusha" },
+        { hex: "#B38CDC", nombre: "Lila" },
+        { hex: "#0076b6", nombre: "Panam" },
+        { hex: "#89d631", nombre: "Verde Manzana" },
+        { hex: "#E6AB00", nombre: "Amarillo Mango" },
+        { hex: "#1B1B1B", nombre: "Negro" },
+        { hex: "#89F336", nombre: "Verde Limón" },
+        { hex: "#fdfe02", nombre: "Amarillo Canario" },
+        { hex: "#E5679B", nombre: "Rosa Neón" },
+        { hex: "#fc4b08", nombre: "Naranja Neón" },
+        { hex: "#de6749", nombre: "Naranja Mandarina" },
+        { hex: "#FFC5D3", nombre: "Rosa Pastel" },
+        { hex: "#FFFFFF", nombre: "Blanco" },
+        { hex: "341539", nombre: "Uva" },
+        { hex: "#00fff0", nombre: "Aqua" },
+        { hex: "#722F37", nombre: "Vino" },
+        { hex: "#e2cbb0", nombre: "Beige" }
+      ],
+      pedidoMinimo: 50,
+      precioDesde: "25",
+      whatsappTexto: "Hola, quiero cotizar el Modelo Mediana Clasica."
+    },
+    {
+      nombre: "Grande Vertical",
+      descripcion: "Diseño reforzado, perfecta para cremerías y jarcerías.",
+      capas: {
+        mascara: "https://i.imgur.com/5WLI4YF.png",
+        transparencia: "https://i.imgur.com/OqRioZ5.png",
+        asa: "https://i.imgur.com/XMKZCeJ.png"
+      },
+      colores: [
+        { hex: "#008000", nombre: "V.Bandera" },
+        { hex: "#b81414", nombre: "Rojo" },
+        { hex: "#22409A", nombre: "A.Rey" },
+        { hex: "#e83375", nombre: "Fiusha" },
+        { hex: "#B38CDC", nombre: "Lila" },
+        { hex: "#0076b6", nombre: "Panam" },
+        { hex: "#89d631", nombre: "Verde Manzana" },
+        { hex: "#E6AB00", nombre: "Amarillo Mango" },
+        { hex: "#1B1B1B", nombre: "Negro" },
+        { hex: "#89F336", nombre: "Verde Limón" },
+        { hex: "#fdfe02", nombre: "Amarillo Canario" },
+        { hex: "#E5679B", nombre: "Rosa Neón" },
+        { hex: "#fc4b08", nombre: "Naranja Neón" },
+        { hex: "#de6749", nombre: "Naranja Mandarina" },
+        { hex: "#FFC5D3", nombre: "Rosa Pastel" },
+        { hex: "#F8F8FF", nombre: "Blanco" },
+        { hex: "341539", nombre: "Uva" },
+        { hex: "#00fff0", nombre: "Aqua" },
+        { hex: "#722F37", nombre: "Vino" },
+        { hex: "#e2cbb0", nombre: "Beige" }
+      ],
+      pedidoMinimo: 50,
+      precioDesde: "27",
+      whatsappTexto: "Hola, quiero cotizar el Modelo Grande Vertical."
+    },
+
+    {
+      nombre: "Mediana Vertical",
+      descripcion: "Tamaño amplio, ideal para semillerías y productos de limpieza.",
+      capas: {
+        mascara: "https://i.imgur.com/wx4v8B1.png",
+        transparencia: "https://i.imgur.com/q6H4uFo.png",
+        asa: "https://i.imgur.com/Sne6bT8.png"
+      },
+      colores: [
+        { hex: "#e83375", nombre: "Fiusha" },
+        { hex: "#b81414", nombre: "Rojo" },
+        { hex: "#22409A", nombre: "A.Rey" },
+        { hex: "#008000", nombre: "V.Bandera" },
+        { hex: "#B38CDC", nombre: "Lila" },
+        { hex: "#0076b6", nombre: "Panam" },
+        { hex: "#89d631", nombre: "Verde Manzana" },
+        { hex: "#E6AB00", nombre: "Amarillo Mango" },
+        { hex: "#1B1B1B", nombre: "Negro" },
+        { hex: "#89F336", nombre: "Verde Limón" },
+        { hex: "#fdfe02", nombre: "Amarillo Canario" },
+        { hex: "#E5679B", nombre: "Rosa Neón" },
+        { hex: "#fc4b08", nombre: "Naranja Neón" },
+        { hex: "#de6749", nombre: "Naranja Mandarina" },
+        { hex: "#FFC5D3", nombre: "Rosa Pastel" },
+        { hex: "#FFFFFF", nombre: "Blanco" },
+        { hex: "341539", nombre: "Uva" },
+        { hex: "#00fff0", nombre: "Aqua" },
+        { hex: "#722F37", nombre: "Vino" },
+        { hex: "#e2cbb0", nombre: "Beige" }
+      ],
+      pedidoMinimo: 50,
+      precioDesde: "25",
+      whatsappTexto: "Hola, quiero cotizar el Modelo Mediana Vertical."
+    }
+  ],
+
+  // -----------------------------------------------------------------
+  // TABLA DE PRECIOS
+  // "cantidades" son las columnas. "precios" dentro de cada modelo
+  // debe tener el mismo número de valores, en el mismo orden.
+  // -----------------------------------------------------------------
+  precios: {
+    cantidades: ["50 piezas", "100 piezas", "200 piezas"],
+    modelos: [
+      { nombre: "Grande Vertical", precios: ["$1350", "$XXX", "$XXX"] },
+      { nombre: "Mediana Vertical", precios: ["$1250", "$XXX", "$XXX"] },
+      { nombre: "Bibo Grande", precios: ["$1450", "$XXX", "$XXX"] }
+    ]
+  },
+
+  // -----------------------------------------------------------------
+  // GALERÍA DE TRABAJOS
+  // Para agregar una foto, copia un bloque { ... } y pégalo en la lista.
+  // -----------------------------------------------------------------
+  galeria: [
+    { imagen: "", negocio: "Ejemplo: Cremería Local", tipo: "Cremería" },
+    { imagen: "", negocio: "Ejemplo: Abarrotes El Buen Precio", tipo: "Abarrotes" },
+    { imagen: "", negocio: "Ejemplo: Mercado San Juan", tipo: "Mercado" },
+    { imagen: "", negocio: "Ejemplo: Semillas y Granos", tipo: "Semillería" },
+    { imagen: "", negocio: "Ejemplo: Productos de Limpieza Brillo", tipo: "Productos de limpieza" },
+    { imagen: "", negocio: "Ejemplo: Pet Shop Amigo Fiel", tipo: "Alimento para mascotas" }
+  ],
+
+  // -----------------------------------------------------------------
+  // TESTIMONIOS
+  // -----------------------------------------------------------------
+  testimonios: [
+    { texto: "[AGREGAR TESTIMONIO REAL]", nombre: "[NOMBRE DEL CLIENTE]", negocio: "[NOMBRE DEL NEGOCIO]", foto: "" },
+    { texto: "[AGREGAR TESTIMONIO REAL]", nombre: "[NOMBRE DEL CLIENTE]", negocio: "[NOMBRE DEL NEGOCIO]", foto: "" },
+    { texto: "[AGREGAR TESTIMONIO REAL]", nombre: "[NOMBRE DEL CLIENTE]", negocio: "[NOMBRE DEL NEGOCIO]", foto: "" }
+  ],
+
+  // -----------------------------------------------------------------
+  // PREGUNTAS FRECUENTES
+  // Para agregar una pregunta, copia un bloque { pregunta, respuesta }.
+  // -----------------------------------------------------------------
+  preguntasFrecuentes: [
+    { pregunta: "¿Cuál es el pedido mínimo?", respuesta: "Nuestro pedido mínimo es de 50 piezas." },
+    { pregunta: "¿Puedo personalizar mi bolsa?", respuesta: "Sí. Podemos personalizarla de acuerdo con tu negocio." },
+    { pregunta: "¿Necesito tener un diseño?", respuesta: "No necesariamente. Puedes enviarnos tu logotipo o idea y podemos ayudarte con el diseño." },
+    { pregunta: "¿Puedo elegir el color?", respuesta: "Sí, dependiendo del modelo y disponibilidad." },
+    { pregunta: "¿Puedo revisar el diseño antes de producir?", respuesta: "Sí. El diseño se revisa antes de comenzar la producción." },
+    { pregunta: "¿Hacen envíos?", respuesta: "Si. Ve a WhatsApp y pregunta por los diferentes metodos de envió" }
+  ]
+};
+</script>
+<!-- ========================= FIN DE CONFIGURACIÓN DE JYL ========================= -->
+
+
+<!-- ============================= HEADER ============================= -->
+<header>
+  <div class="header-inner">
+    <a href="#inicio" class="logo" id="logo-header">
+      <span id="logo-texto">J&amp;L Bolsas publicitarias</span>
+    </a>
+    <nav class="menu-principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#modelos">Modelos</a>
+      <a href="#precios">Precios</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#faq">Preguntas frecuentes</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-derecha">
+      <button class="btn-hamburguesa" id="btn-hamburguesa" aria-label="Abrir menú">&#9776;</button>
+    </div>
+  </div>
+  <div class="menu-movil" id="menu-movil">
+    <a href="#inicio">Inicio</a>
+    <a href="#modelos">Modelos</a>
+    <a href="#precios">Precios</a>
+    <a href="#proceso">Cómo funciona</a>
+    <a href="#faq">Preguntas frecuentes</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#" class="whatsapp-link" data-mensaje="general" style="color:var(--color-principal);font-weight:700;">Cotizar por WhatsApp</a>
+  </div>
+</header>
+
+<!-- ============================= HERO ============================= -->
+<section class="hero" id="inicio">
+  <div class="hero-grid">
+    <div>
+      <h1 id="hero-titulo"></h1>
+      <p class="subtitulo" id="hero-subtitulo"></p>
+      <p id="hero-texto"></p>
+      <div class="hero-botones">
+        <a href="#contacto" class="btn btn-primario btn-grande whatsapp-link" data-mensaje="general">Quiero cotizar</a>
+        <a href="#modelos" class="btn btn-secundario btn-grande">Ver modelos</a>
+      </div>
+      <div class="beneficios-rapidos">
+        <div class="beneficio-rapido"><span class="check">&#10003;</span> Pedido mínimo desde 50 piezas</div>
+        <div class="beneficio-rapido"><span class="check">&#10003;</span> Diseño personalizado</div>
+        <div class="beneficio-rapido"><span class="check">&#10003;</span> Diferentes modelos y colores</div>
+        <div class="beneficio-rapido"><span class="check">&#10003;</span> Atención directa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CONFIANZA ============================= -->
+<section class="alterno">
+  <div class="contenedor">
+    <div class="confianza-grid">
+      <div>
+        <p class="etiqueta">Confianza</p>
+        <h2 class="titulo-seccion" id="confianza-titulo"></h2>
+        <div class="confianza-numero" id="confianza-numero" style="margin:18px 0;"></div>
+        <p id="confianza-texto" style="color:var(--color-texto-secundario);"></p>
+      </div>
+      <div class="beneficios-lista">
+        <div class="beneficio-item">
+          <h4>Atención personalizada</h4>
+          <p>Hablas directamente con nosotros durante el proceso de tu pedido.</p>
+        </div>
+        <div class="beneficio-item">
+          <h4>Diseño personalizado</h4>
+          <p>Adaptamos el diseño a tu negocio y a la imagen que quieres transmitir.</p>
+        </div>
+        <div class="beneficio-item">
+          <h4>Revisión del diseño</h4>
+          <p>Antes de producir tu pedido puedes revisar el diseño de tu bolsa.</p>
+        </div>
+        <div class="beneficio-item">
+          <h4>Pedido desde 50 piezas</h4>
+          <p>Puedes comenzar con pedidos pequeños para tu negocio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= MODELOS ============================= -->
+<section id="modelos">
+  <div class="contenedor centro">
+    <p class="etiqueta">Nuestros productos</p>
+    <h2 class="titulo-seccion">Conoce nuestros modelos</h2>
+    <p class="subtitulo-seccion">Elige el modelo que mejor se adapte a tu negocio y solicita una cotización.</p>
+    <div class="grid-tarjetas" id="grid-productos"></div>
+  </div>
+</section>
+
+<!-- ============================= PRECIOS ============================= -->
+<section class="alterno" id="precios">
+  <div class="contenedor centro">
+    <p class="etiqueta">Precios</p>
+    <h2 class="titulo-seccion">Precios</h2>
+    <p class="subtitulo-seccion">Consulta nuestras opciones y encuentra la cantidad que mejor se adapte a tu negocio.</p>
+    <div style="overflow-x:auto;">
+      <table class="tabla-precios" id="tabla-precios"></table>
+    </div>
+    <p class="nota-precios">Los precios pueden variar dependiendo del modelo, cantidad, personalización y disponibilidad.</p>
+    <a href="#contacto" class="btn btn-primario btn-grande whatsapp-link" data-mensaje="general" style="margin-top:26px;">Quiero cotizar</a>
+  </div>
+</section>
+
+<!-- ============================= GALERÍA ============================= -->
+<section>
+  <div class="contenedor centro">
+    <p class="etiqueta">Galería</p>
+    <h2 class="titulo-seccion">Mira algunos de nuestros trabajos</h2>
+    <div class="grid-tarjetas" id="grid-galeria"></div>
+  </div>
+</section>
+
+<!-- ============================= BENEFICIO PUBLICITARIO ============================= -->
+<section class="alterno">
+  <div class="contenedor centro">
+    <p class="etiqueta">Publicidad</p>
+    <h2 class="titulo-seccion">Tu bolsa también puede hacer publicidad</h2>
+    <p class="subtitulo-seccion">Cada vez que un cliente sale de tu negocio con una bolsa personalizada, tu nombre puede seguir circulando por la calle, en el mercado o en otro negocio.</p>
+    <div class="beneficio-pub-grid">
+      <div class="beneficio-pub-item">
+        <div class="numero-icono">1</div>
+        <h4>Tu marca se hace visible</h4>
+        <p>Tu nombre puede estar presente fuera de tu establecimiento.</p>
+      </div>
+      <div class="beneficio-pub-item">
+        <div class="numero-icono">2</div>
+        <h4>Tus clientes te recuerdan</h4>
+        <p>Una bolsa útil puede permanecer con el cliente y reforzar el recuerdo de tu negocio.</p>
+      </div>
+      <div class="beneficio-pub-item">
+        <div class="numero-icono">3</div>
+        <h4>Tu negocio proyecta profesionalismo</h4>
+        <p>Una presentación cuidada ayuda a transmitir una imagen más profesional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= PROCESO ============================= -->
+<section id="proceso">
+  <div class="contenedor centro">
+    <p class="etiqueta">Proceso</p>
+    <h2 class="titulo-seccion">Comprar tus bolsas es muy sencillo</h2>
+    <div class="proceso-grid">
+      <div class="paso-proceso"><div class="numero">01</div><h4>Cuéntanos qué necesitas</h4><p>Dinos qué tipo de negocio tienes y aproximadamente cuántas bolsas necesitas.</p></div>
+      <div class="paso-proceso"><div class="numero">02</div><h4>Recibe tu cotización</h4><p>Te mostramos las opciones disponibles y el precio correspondiente.</p></div>
+      <div class="paso-proceso"><div class="numero">03</div><h4>Preparamos tu diseño</h4><p>Puedes enviarnos tu logotipo o idea.</p></div>
+      <div class="paso-proceso"><div class="numero">04</div><h4>Revisas el diseño</h4><p>Revisas cómo quedará tu bolsa antes de producir.</p></div>
+      <div class="paso-proceso"><div class="numero">05</div><h4>Producimos</h4><p>Una vez autorizado el diseño, comenzamos la producción.</p></div>
+      <div class="paso-proceso"><div class="numero">06</div><h4>Recibes tu pedido</h4><p>Coordinamos la entrega o envío según corresponda.</p></div>
+    </div>
+    <a href="#contacto" class="btn btn-primario btn-grande whatsapp-link" data-mensaje="general" style="margin-top:44px;">Quiero cotizar mi pedido</a>
+  </div>
+</section>
+
+<!-- ============================= TESTIMONIOS ============================= -->
+<section class="alterno">
+  <div class="contenedor centro">
+    <p class="etiqueta">Testimonios</p>
+    <h2 class="titulo-seccion">Lo que dicen nuestros clientes</h2>
+    <div class="grid-tarjetas" id="grid-testimonios"></div>
+  </div>
+</section>
+
+<!-- ============================= FAQ ============================= -->
+<section id="faq">
+  <div class="contenedor" style="max-width:760px;">
+    <p class="etiqueta centro" style="display:block;">Preguntas frecuentes</p>
+    <h2 class="titulo-seccion centro">Preguntas frecuentes</h2>
+    <div id="lista-faq" style="margin-top:34px;"></div>
+  </div>
+</section>
+
+<!-- ============================= CTA FINAL ============================= -->
+<section id="contacto">
+  <div class="cta-final">
+    <h2 class="titulo-seccion">¿Listo para tener tus bolsas personalizadas?</h2>
+    <p>Cuéntanos qué tipo de negocio tienes y cuántas bolsas necesitas. Te ayudamos a encontrar la opción adecuada para ti.</p>
+    <a href="#" class="btn btn-primario btn-grande whatsapp-link" data-mensaje="general">Cotizar por WhatsApp</a>
+  </div>
+</section>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-marca">
+      <div class="logo" id="logo-footer">JYL</div>
+      <p>Bolsas mandaderas personalizadas para negocios.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h5>Enlaces</h5>
+        <a href="#inicio">Inicio</a>
+        <a href="#" class="whatsapp-link" data-mensaje="general">WhatsApp</a>
+        <a href="#" id="link-facebook" target="_blank" rel="noopener">Facebook</a>
+        <a href="#" id="link-instagram" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; <span id="anio-actual"></span> <span id="footer-nombre"></span>
+  </div>
+</footer>
+
+<!-- ============================= BOTÓN FLOTANTE WHATSAPP ============================= -->
+<a href="#" class="whatsapp-flotante whatsapp-link" data-mensaje="general" id="whatsapp-flotante" aria-label="Cotizar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.73 13.4L3 21l3.71-1.28a8.9 8.9 0 0 0 5.34 1.78 8.94 8.94 0 0 0 8.9-8.92 8.86 8.86 0 0 0-2.65-6.26ZM12.05 20a7.9 7.9 0 0 1-4-1.09l-.29-.17-2.4.83.8-2.34-.19-.3a7.95 7.95 0 1 1 14.9-3.94 7.94 7.94 0 0 1-8.82 6.99Zm4.36-5.94c-.24-.12-1.42-.7-1.64-.78s-.38-.12-.54.12-.62.78-.76.94-.28.18-.52.06a6.5 6.5 0 0 1-3.24-2.83c-.24-.42.24-.39.7-1.3a.44.44 0 0 0-.02-.42c-.06-.12-.54-1.3-.74-1.78s-.4-.4-.54-.4-.3-.02-.46-.02a.9.9 0 0 0-.64.3 2.71 2.71 0 0 0-.84 2 4.7 4.7 0 0 0 1 2.5 10.8 10.8 0 0 0 4.14 3.66c1.44.62 2 .68 2.72.57a2.32 2.32 0 0 0 1.52-1.08 1.9 1.9 0 0 0 .13-1.08c-.06-.1-.22-.16-.46-.28Z"/></svg>
+</a>
+
+<script>
+/* =========================================================
+   FUNCIONES — no necesitas modificar nada de aquí para abajo.
+   Todo el contenido se dibuja usando lo que pusiste arriba en
+   "configuracion".
+   ========================================================= */
+
+function crearImagen(url, texto){
+  if(url){
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = texto || '';
+    return img;
+  }
+  const div = document.createElement('div');
+  div.className = 'placeholder-imagen';
+  div.textContent = '[COLOCAR FOTO AQUÍ]';
+  return div;
+}
+
+function numeroWhatsApp(){
+  return (configuracion.negocio.whatsapp || '').replace(/[^0-9]/g,'');
+}
+
+function enlaceWhatsApp(mensajePersonalizado){
+  const numero = numeroWhatsApp();
+  const mensaje = encodeURIComponent(mensajePersonalizado || configuracion.negocio.mensajeWhatsApp);
+  return `https://wa.me/${numero}?text=${mensaje}`;
+}
+
+function pintarTextosBasicos(){
+  document.title = `${configuracion.negocio.nombre} | Bolsas Mandaderas Personalizadas`;
+  document.querySelectorAll('#logo-footer, #footer-nombre').forEach(el=>{
+    el.textContent = configuracion.negocio.nombre;
+  });
+
+  if(configuracion.imagenes.logo){
+    const logoImg = document.createElement('img');
+    logoImg.src = configuracion.imagenes.logo;
+    logoImg.alt = configuracion.negocio.nombre;
+    document.getElementById('logo-header').prepend(logoImg);
+  }
+
+  document.getElementById('hero-titulo').textContent = configuracion.textos.tituloPrincipal;
+  document.getElementById('hero-subtitulo').textContent = configuracion.textos.subtituloHero;
+  document.getElementById('hero-texto').textContent = configuracion.textos.textoHero;
+
+  document.getElementById('confianza-titulo').textContent = configuracion.textos.tituloConfianza;
+  document.getElementById('confianza-numero').innerHTML =
+    `${configuracion.textos.numeroAniosExperiencia} años <span>creando bolsas para negocios</span>`;
+  document.getElementById('confianza-texto').textContent = configuracion.textos.textoConfianza;
+
+  document.getElementById('anio-actual').textContent = new Date().getFullYear();
+
+  const linkFacebook = document.getElementById('link-facebook');
+  if(configuracion.negocio.facebook && configuracion.negocio.facebook !== 'AGREGAR_FACEBOOK'){
+    linkFacebook.href = configuracion.negocio.facebook;
+  } else {
+    linkFacebook.style.display = 'none';
+  }
+
+  const linkInstagram = document.getElementById('link-instagram');
+  if(configuracion.negocio.instagram && configuracion.negocio.instagram !== 'AGREGAR_INSTAGRAM'){
+    linkInstagram.href = configuracion.negocio.instagram;
+  } else {
+    linkInstagram.style.display = 'none';
+  }
+
+  if(!configuracion.negocio.mostrarBotonFlotante){
+    document.getElementById('whatsapp-flotante').style.display = 'none';
+  }
+}
+
+function crearVisorProducto(producto){
+  const visor = document.createElement('div');
+  visor.className = 'visor-producto';
+
+  const capas = producto.capas || {};
+
+  // Solo armamos el sistema de color si hay una máscara configurada.
+  // La bolsa se pinta directamente con el primer color de la lista
+  // (esto se hace después, en seleccionarColor).
+  if(capas.mascara){
+    const capaColor = document.createElement('div');
+    capaColor.className = 'capa-color';
+    capaColor.style.webkitMaskImage = `url("${capas.mascara}")`;
+    capaColor.style.maskImage = `url("${capas.mascara}")`;
+    visor.appendChild(capaColor);
+    producto._capaColorEl = capaColor;
+  } else {
+    // Sin máscara todavía: mostramos un espacio para recordar que falta la imagen
+    visor.appendChild(crearImagen(null, producto.nombre));
+  }
+
+  // Capa: brillos/sombras/reflejos (opcional)
+  if(capas.transparencia){
+    const capaTransparencia = document.createElement('img');
+    capaTransparencia.src = capas.transparencia;
+    capaTransparencia.alt = '';
+    capaTransparencia.className = 'capa-transparencia';
+    visor.appendChild(capaTransparencia);
+  }
+
+  // Capa: asa/mango, siempre encima y nunca cambia de color (opcional)
+  if(capas.asa){
+    const capaAsa = document.createElement('img');
+    capaAsa.src = capas.asa;
+    capaAsa.alt = '';
+    capaAsa.className = 'capa-asa';
+    visor.appendChild(capaAsa);
+  }
+
+  return visor;
+}
+
+// Límite de cuántos colores puede ELEGIR el cliente al mismo tiempo (no limita
+// cuántos colores puede ofrecer el negocio: en la configuración puedes poner
+// todos los que quieras).
+const MAX_COLORES_SELECCIONABLES = 5;
+
+// -----------------------------------------------------------------
+// LIGHTBOX: al pulsar la imagen de un modelo, se muestra ampliada
+// (con el mismo color, brillos y asa que ya tenía en la tarjeta).
+// -----------------------------------------------------------------
+let lightboxOverlay = null;
+
+function abrirLightbox(visorOriginal){
+  if(!lightboxOverlay){
+    lightboxOverlay = document.createElement('div');
+    lightboxOverlay.className = 'lightbox-overlay';
+    lightboxOverlay.innerHTML = `
+      <div class="lightbox-contenido">
+        <button type="button" class="lightbox-cerrar" aria-label="Cerrar">&times;</button>
+      </div>
+    `;
+    document.body.appendChild(lightboxOverlay);
+
+    lightboxOverlay.addEventListener('click', (evento)=>{
+      if(evento.target === lightboxOverlay) cerrarLightbox();
+    });
+    lightboxOverlay.querySelector('.lightbox-cerrar').addEventListener('click', cerrarLightbox);
+    document.addEventListener('keydown', (evento)=>{
+      if(evento.key === 'Escape') cerrarLightbox();
+    });
+  }
+
+  const contenido = lightboxOverlay.querySelector('.lightbox-contenido');
+  contenido.querySelectorAll('.visor-producto').forEach(el=>el.remove());
+  contenido.appendChild(visorOriginal.cloneNode(true));
+
+  lightboxOverlay.classList.add('visible');
+}
+
+function cerrarLightbox(){
+  if(lightboxOverlay) lightboxOverlay.classList.remove('visible');
+}
+
+// -----------------------------------------------------------------
+// AVISO FLOTANTE (mensaje que aparece en pantalla)
+// -----------------------------------------------------------------
+let avisoTimeoutId = null;
+function mostrarAviso(mensaje){
+  let aviso = document.getElementById('aviso-flotante');
+  if(!aviso){
+    aviso = document.createElement('div');
+    aviso.id = 'aviso-flotante';
+    aviso.className = 'aviso-flotante';
+    document.body.appendChild(aviso);
+  }
+  aviso.textContent = mensaje;
+  aviso.classList.add('visible');
+  clearTimeout(avisoTimeoutId);
+  avisoTimeoutId = setTimeout(()=>{
+    aviso.classList.remove('visible');
+  }, 2500);
+}
+
+// -----------------------------------------------------------------
+// BOTÓN "VISTA PREVIA": muestra/oculta los colores de un modelo.
+// Solo un modelo puede tener sus colores visibles a la vez: al abrir
+// la vista previa de otro modelo, la anterior se vuelve a esconder.
+// -----------------------------------------------------------------
+let tarjetaVistaPreviaAbierta = null;
+
+function alternarVistaPrevia(tarjeta, boton){
+  const selector = tarjeta.querySelector('.selector-colores');
+  const textoColor = tarjeta.querySelector('.color-seleccionado-texto');
+  const estaAbierta = tarjeta === tarjetaVistaPreviaAbierta;
+
+  // Cerramos la que estuviera abierta (si era otra distinta a esta)
+  if(tarjetaVistaPreviaAbierta && tarjetaVistaPreviaAbierta !== tarjeta){
+    const otroSelector = tarjetaVistaPreviaAbierta.querySelector('.selector-colores');
+    const otroTexto = tarjetaVistaPreviaAbierta.querySelector('.color-seleccionado-texto');
+    const otroBoton = tarjetaVistaPreviaAbierta.querySelector('.btn-vista-previa');
+    otroSelector.classList.add('oculto');
+    otroTexto.classList.add('oculto');
+    if(otroBoton) otroBoton.textContent = 'Vista previa';
+  }
+
+  if(estaAbierta){
+    selector.classList.add('oculto');
+    textoColor.classList.add('oculto');
+    boton.textContent = 'Vista previa';
+    tarjetaVistaPreviaAbierta = null;
+  } else {
+    selector.classList.remove('oculto');
+    textoColor.classList.remove('oculto');
+    boton.textContent = 'Ocultar colores';
+    tarjetaVistaPreviaAbierta = tarjeta;
+  }
+}
+
+function actualizarSeleccionColores(producto, tarjeta){
+  const seleccionados = producto._coloresSeleccionados;
+
+  tarjeta.querySelectorAll('.boton-color').forEach(boton=>{
+    boton.classList.toggle('activo', seleccionados.some(c=>c.hex === boton.dataset.hex));
+  });
+
+  // La vista previa de la bolsa muestra el último color que el cliente eligió
+  if(producto._capaColorEl && seleccionados.length){
+    producto._capaColorEl.style.backgroundColor = seleccionados[seleccionados.length - 1].hex;
+  }
+
+  const textoColor = tarjeta.querySelector('.color-seleccionado-texto');
+  if(textoColor){
+    if(seleccionados.length){
+      const nombres = seleccionados.map(c=>c.nombre).join(', ');
+      textoColor.innerHTML = `Colores elegidos (${seleccionados.length}/${MAX_COLORES_SELECCIONABLES}): <strong>${nombres}</strong>`;
+    } else {
+      textoColor.innerHTML = `Elige hasta ${MAX_COLORES_SELECCIONABLES} colores`;
+    }
+  }
+
+  const enlaceCotizar = tarjeta.querySelector('.whatsapp-link-color');
+  if(enlaceCotizar){
+    const listaColores = seleccionados.length
+      ? seleccionados.map(c=>c.nombre).join(', ')
+      : 'sin especificar';
+    const mensaje = `${producto.whatsappTexto} Color(es): ${listaColores}.`;
+    enlaceCotizar.href = enlaceWhatsApp(mensaje);
+  }
+}
+
+function alternarColor(producto, color, tarjeta){
+  const seleccionados = producto._coloresSeleccionados;
+  const indice = seleccionados.findIndex(c=>c.hex === color.hex);
+
+  if(indice > -1){
+    // Ya estaba elegido: lo quitamos
+    seleccionados.splice(indice, 1);
+  } else if(seleccionados.length < MAX_COLORES_SELECCIONABLES){
+    // Lo agregamos si todavía no se llega al máximo permitido
+    seleccionados.push(color);
+  } else {
+    // Ya eligió el máximo de colores permitido: no se agrega uno nuevo
+    mostrarAviso('Solo puedes elegir 5 colores por bolsa');
+    return;
+  }
+
+  actualizarSeleccionColores(producto, tarjeta);
+}
+
+function pintarProductos(){
+  const contenedor = document.getElementById('grid-productos');
+  configuracion.productos.forEach(producto=>{
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'tarjeta-producto';
+
+    // Aquí se muestran TODOS los colores que pusiste en la configuración
+    // para este modelo (no hay límite de cuántos puedes ofrecer).
+    const coloresDisponibles = producto.colores;
+    producto._coloresSeleccionados = [];
+
+    const botonesColores = coloresDisponibles.map(color=>
+      `<button type="button" class="boton-color" data-hex="${color.hex}" title="${color.nombre}" style="background:${color.hex};" aria-label="Color ${color.nombre}"></button>`
+    ).join('');
+
+    tarjeta.innerHTML = `
+      <div class="visor-producto-contenedor"></div>
+      <div class="tarjeta-producto-cuerpo">
+        <h3>${producto.nombre}</h3>
+        <p class="descripcion">${producto.descripcion}</p>
+        <button type="button" class="btn-vista-previa">Vista previa</button>
+        <div class="selector-colores oculto">${botonesColores}</div>
+        <p class="color-seleccionado-texto oculto"></p>
+        <p class="info-linea">Pedido mínimo: ${producto.pedidoMinimo} piezas</p>
+        <p class="precio">Desde $${producto.precioDesde} <small>por pieza</small></p>
+        <a href="#" class="btn btn-oscuro btn-ancho whatsapp-link-color" target="_blank" rel="noopener">Cotizar este modelo</a>
+      </div>
+    `;
+
+    const visor = crearVisorProducto(producto);
+    tarjeta.querySelector('.visor-producto-contenedor').appendChild(visor);
+    visor.addEventListener('click', ()=>abrirLightbox(visor));
+
+    tarjeta.querySelectorAll('.boton-color').forEach(boton=>{
+      boton.addEventListener('click', ()=>{
+        const color = coloresDisponibles.find(c=>c.hex === boton.dataset.hex);
+        alternarColor(producto, color, tarjeta);
+      });
+    });
+
+    tarjeta.querySelector('.btn-vista-previa').addEventListener('click', (evento)=>{
+      alternarVistaPrevia(tarjeta, evento.currentTarget);
+    });
+
+    // Se pinta el primer color por defecto al cargar la página (como vista previa)
+    if(coloresDisponibles.length){
+      producto._coloresSeleccionados = [coloresDisponibles[0]];
+      actualizarSeleccionColores(producto, tarjeta);
+    }
+
+    contenedor.appendChild(tarjeta);
+  });
+}
+
+function pintarTablaPrecios(){
+  const tabla = document.getElementById('tabla-precios');
+  const encabezado = document.createElement('tr');
+  encabezado.innerHTML = '<th>Modelo</th>' + configuracion.precios.cantidades.map(c=>`<th>${c}</th>`).join('');
+  tabla.appendChild(encabezado);
+
+  configuracion.precios.modelos.forEach(modelo=>{
+    const fila = document.createElement('tr');
+    fila.innerHTML = `<td>${modelo.nombre}</td>` + modelo.precios.map(p=>`<td>${p}</td>`).join('');
+    tabla.appendChild(fila);
+  });
+}
+
+function pintarGaleria(){
+  const contenedor = document.getElementById('grid-galeria');
+  configuracion.galeria.forEach(item=>{
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'tarjeta-galeria';
+    tarjeta.innerHTML = `<div class="etiqueta-galeria"><strong>${item.negocio}</strong><span>${item.tipo}</span></div>`;
+    tarjeta.prepend(crearImagen(item.imagen, item.negocio));
+    contenedor.appendChild(tarjeta);
+  });
+}
+
+function pintarTestimonios(){
+  const contenedor = document.getElementById('grid-testimonios');
+  configuracion.testimonios.forEach(t=>{
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'tarjeta-testimonio';
+    tarjeta.innerHTML = `
+      <p class="texto">"${t.texto}"</p>
+      <div class="autor">
+        <div class="avatar-testimonio"></div>
+        <div>
+          <strong>${t.nombre}</strong>
+          <span>${t.negocio}</span>
+        </div>
+      </div>
+    `;
+    if(t.foto){
+      const foto = document.createElement('img');
+      foto.src = t.foto;
+      foto.alt = t.nombre;
+      tarjeta.querySelector('.avatar-testimonio').appendChild(foto);
+    }
+    contenedor.appendChild(tarjeta);
+  });
+}
+
+function pintarFaq(){
+  const contenedor = document.getElementById('lista-faq');
+  configuracion.preguntasFrecuentes.forEach((item, indice)=>{
+    let respuesta = item.respuesta;
+    if(respuesta.includes('[AGREGAR INFORMACIÓN REAL SOBRE ENVÍOS]') && configuracion.textos.tituloEnvios){
+      respuesta = configuracion.textos.tituloEnvios;
+    }
+    const bloque = document.createElement('div');
+    bloque.className = 'faq-item';
+    bloque.innerHTML = `
+      <button class="faq-pregunta" data-indice="${indice}">
+        ${item.pregunta} <span class="icono-faq">+</span>
+      </button>
+      <div class="faq-respuesta"><p>${respuesta}</p></div>
+    `;
+    contenedor.appendChild(bloque);
+  });
+
+  document.querySelectorAll('.faq-pregunta').forEach(boton=>{
+    boton.addEventListener('click', ()=>{
+      const item = boton.closest('.faq-item');
+      const respuesta = item.querySelector('.faq-respuesta');
+      const abierto = item.classList.contains('abierto');
+
+      document.querySelectorAll('.faq-item.abierto').forEach(otro=>{
+        otro.classList.remove('abierto');
+        otro.querySelector('.faq-respuesta').style.maxHeight = null;
+      });
+
+      if(!abierto){
+        item.classList.add('abierto');
+        respuesta.style.maxHeight = respuesta.scrollHeight + 'px';
+      }
+    });
+  });
+}
+
+function activarEnlacesWhatsApp(){
+  document.querySelectorAll('.whatsapp-link').forEach(enlace=>{
+    let mensaje = enlace.getAttribute('data-mensaje');
+    mensaje = (mensaje && mensaje !== 'general') ? decodeURIComponent(mensaje) : configuracion.negocio.mensajeWhatsApp;
+    enlace.href = enlaceWhatsApp(mensaje);
+    enlace.target = '_blank';
+    enlace.rel = 'noopener';
+  });
+}
+
+function activarMenuMovil(){
+  const boton = document.getElementById('btn-hamburguesa');
+  const menu = document.getElementById('menu-movil');
+  boton.addEventListener('click', ()=>{
+    menu.classList.toggle('activo');
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>menu.classList.remove('activo')));
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  pintarTextosBasicos();
+  pintarProductos();
+  pintarTablaPrecios();
+  pintarGaleria();
+  pintarTestimonios();
+  pintarFaq();
+  activarEnlacesWhatsApp();
+  activarMenuMovil();
+});
+</script>
+
+</body>
+</html>
