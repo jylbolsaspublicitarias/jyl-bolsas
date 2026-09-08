@@ -198,6 +198,7 @@ nav.menu-principal a:hover{color:var(--color-principal);}
   cursor:default;box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 .lightbox-contenido .visor-producto{max-height:none;cursor:default;}
+.lightbox-contenido img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--color-visor-fondo);}
 .lightbox-cerrar{
   position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;
   font-size:32px;line-height:1;cursor:pointer;padding:6px;
@@ -230,7 +231,7 @@ nav.menu-principal a:hover{color:var(--color-principal);}
 .nota-precios{margin-top:18px;font-size:13px;color:var(--color-texto-secundario);text-align:center;}
 
 /* GALERÍA */
-.tarjeta-galeria{border-radius:var(--radio);overflow:hidden;position:relative;box-shadow:var(--sombra);aspect-ratio:1/1;max-height:280px;margin:0 auto;width:100%;}
+.tarjeta-galeria{border-radius:var(--radio);overflow:hidden;position:relative;box-shadow:var(--sombra);aspect-ratio:1/1;max-height:280px;margin:0 auto;width:100%;cursor:zoom-in;}
 .tarjeta-galeria img,.tarjeta-galeria .placeholder-imagen{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .tarjeta-galeria .etiqueta-galeria{
   position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
@@ -597,21 +598,20 @@ const configuracion = {
   // Para agregar una foto, copia un bloque { ... } y pégalo en la lista.
   // -----------------------------------------------------------------
   galeria: [
-    { imagen: "", negocio: "Ejemplo: Cremería Local", tipo: "Cremería" },
-    { imagen: "", negocio: "Ejemplo: Abarrotes El Buen Precio", tipo: "Abarrotes" },
-    { imagen: "", negocio: "Ejemplo: Mercado San Juan", tipo: "Mercado" },
-    { imagen: "", negocio: "Ejemplo: Semillas y Granos", tipo: "Semillería" },
-    { imagen: "", negocio: "Ejemplo: Productos de Limpieza Brillo", tipo: "Productos de limpieza" },
-    { imagen: "", negocio: "Ejemplo: Pet Shop Amigo Fiel", tipo: "Alimento para mascotas" }
+    { imagen: "https://i.imgur.com/fa9LwRl.png", negocio: "", tipo: "" },
+    { imagen: "https://i.imgur.com/cEfEWs1.png", negocio: "", tipo: ""  },
+    { imagen: "https://i.imgur.com/1M9jfRR.png", negocio: "", tipo: ""  },
+    { imagen: "https://i.imgur.com/mRpMVOB.png", negocio: "", tipo: ""  },
+    { imagen: "https://i.imgur.com/OOxvtxy.png", negocio: "", tipo: ""  }
   ],
 
   // -----------------------------------------------------------------
   // TESTIMONIOS
   // -----------------------------------------------------------------
   testimonios: [
-    { texto: "[AGREGAR TESTIMONIO REAL]", nombre: "[NOMBRE DEL CLIENTE]", negocio: "[NOMBRE DEL NEGOCIO]", foto: "" },
-    { texto: "[AGREGAR TESTIMONIO REAL]", nombre: "[NOMBRE DEL CLIENTE]", negocio: "[NOMBRE DEL NEGOCIO]", foto: "" },
-    { texto: "[AGREGAR TESTIMONIO REAL]", nombre: "[NOMBRE DEL CLIENTE]", negocio: "[NOMBRE DEL NEGOCIO]", foto: "" }
+    { texto: "[Buenas tardes, muchas gracias, ya casi estoy repartiendo el ultimo ciento. Estamos en Contacto y espero en el futuro proximo poder hacer negocio con ustedes. Y no dudes que con gusto dare mi recomendación a quien me pregunte dónde mande a hacer las bolsas]", nombre: "", negocio: "Polleria Central Avícola Fresnillo (Zacatecas) ", foto: "https://i.imgur.com/p6IL0OQ.png" },
+    { texto: "[Buenas noches, ya les envie lo que faltaba. Ya tengo las bolsas, gracias estan bonitas]", nombre: "", negocio: "Cenaduria Dios Proveera (Oaxaca)", foto: "https://i.imgur.com/p6IL0OQ.png" },
+    { texto: "[Hola muy buenos días, La verdad muchisimas gracias y muchas felicidades por su trabajo. Mis padres y yo quedamos facinados con la calidad y la puntualidad que nos dieron. Estamos en contacto para siguientes pedidos. Que Dios los bendiga!!!]", nombre: "", negocio: "Farmacia Agua Azul (Cd. Neza)", foto: "https://i.imgur.com/p6IL0OQ.png" }
   ],
 
   // -----------------------------------------------------------------
@@ -990,7 +990,7 @@ function abrirLightbox(visorOriginal){
   }
 
   const contenido = lightboxOverlay.querySelector('.lightbox-contenido');
-  contenido.querySelectorAll('.visor-producto').forEach(el=>el.remove());
+  contenido.querySelectorAll('.visor-producto, img').forEach(el=>el.remove());
   contenido.appendChild(visorOriginal.cloneNode(true));
 
   lightboxOverlay.classList.add('visible');
@@ -1179,7 +1179,11 @@ function pintarGaleria(){
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta-galeria';
     tarjeta.innerHTML = `<div class="etiqueta-galeria"><strong>${item.negocio}</strong><span>${item.tipo}</span></div>`;
-    tarjeta.prepend(crearImagen(item.imagen, item.negocio));
+    const imagen = crearImagen(item.imagen, item.negocio);
+    tarjeta.prepend(imagen);
+    if(item.imagen){
+      tarjeta.addEventListener('click', ()=>abrirLightbox(imagen));
+    }
     contenedor.appendChild(tarjeta);
   });
 }
