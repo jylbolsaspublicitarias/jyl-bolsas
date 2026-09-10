@@ -37,7 +37,7 @@
   --color-borde:#e4e8f0;
   --color-placeholder-1:#eef1f7;
   --color-placeholder-2:#e4e8f0;
-  --color-visor-fondo:#d3d3d3;
+  --color-visor-fondo:#E4E4E4;
   --radio:14px;
   --sombra:0 10px 30px rgba(18,32,59,0.08);
 }
@@ -184,6 +184,47 @@ nav.menu-principal a:hover{color:var(--color-principal);}
 .btn-vista-previa:hover{background:var(--color-borde);}
 .selector-colores{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0;}
 .selector-colores.oculto,.color-seleccionado-texto.oculto{display:none;}
+
+/* SELECTOR DE MEDIDAS (G / M / CH) en la tarjeta y en la vista de cotización */
+.selector-medidas-wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0 2px;}
+.etiqueta-medidas{font-size:13px;font-weight:600;color:var(--color-texto-secundario);}
+.selector-medidas{display:flex;gap:8px;flex-wrap:wrap;}
+.boton-medida{
+  min-width:42px;height:36px;padding:0 12px;border-radius:999px;
+  border:1.5px solid var(--color-borde);background:var(--color-tarjeta);
+  color:var(--color-texto);font-weight:700;font-size:13px;cursor:pointer;
+  transition:border-color .15s ease, background .15s ease, color .15s ease, transform .15s ease;
+}
+.boton-medida:hover{transform:translateY(-1px);border-color:var(--color-principal);}
+.boton-medida.activo{background:var(--color-principal);border-color:var(--color-principal);color:#fff;}
+
+/* VISTA DE COTIZACIÓN (se abre al elegir una medida): elegir colores y cotizar */
+.modal-cotizar-overlay{
+  position:fixed;inset:0;z-index:2100;background:rgba(10,14,22,.85);
+  display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;
+}
+.modal-cotizar-overlay.visible{display:flex;}
+.modal-cotizar-contenido{
+  position:relative;width:min(760px,100%);max-height:92vh;overflow-y:auto;
+  background:var(--color-tarjeta);border-radius:var(--radio);box-shadow:0 20px 60px rgba(0,0,0,.4);
+  display:grid;grid-template-columns:1fr 1fr;gap:0;margin:auto;
+}
+.modal-cotizar-visor{position:relative;background:var(--color-visor-fondo);min-height:280px;}
+.modal-cotizar-visor .visor-producto{width:100%;height:100%;max-height:none;cursor:default;aspect-ratio:auto;}
+.modal-cotizar-info{padding:26px;display:flex;flex-direction:column;gap:12px;}
+.modal-cotizar-nombre{font-size:21px;}
+.modal-cotizar-etiqueta-colores{font-size:13px;font-weight:600;color:var(--color-texto-secundario);margin-top:4px;}
+.modal-cotizar-colores{display:flex;flex-wrap:wrap;gap:8px;}
+.modal-cotizar-btn{margin-top:auto;}
+.modal-cotizar-cerrar{
+  position:absolute;top:14px;right:14px;z-index:5;background:var(--color-fondo-alterno);border:none;
+  width:34px;height:34px;border-radius:50%;color:var(--color-texto);
+  font-size:22px;line-height:1;cursor:pointer;
+}
+@media (max-width:640px){
+  .modal-cotizar-contenido{grid-template-columns:1fr;max-height:94vh;}
+  .modal-cotizar-visor{min-height:220px;}
+}
 
 /* LIGHTBOX — imagen del modelo ampliada */
 .lightbox-overlay{
@@ -384,7 +425,7 @@ const configuracion = {
     subtituloHero: "Bolsas personalizadas para tiendas, mercados y negocios.",
     textoHero: "Tu marca puede acompañar a tus clientes todos los días. Creamos bolsas personalizadas para que tu negocio se vea profesional y sea más fácil de recordar.",
 
-    tituloConfianza: "¿Por qué confiar en JYL?",
+    tituloConfianza: "¿Por qué confiar en J&L?",
     numeroAniosExperiencia: "30", // CAMBIA AQUÍ el número de años de experiencia
     textoConfianza: "Tenemos experiencia trabajando con comerciantes y negocios que necesitan bolsas prácticas, resistentes y personalizadas para entregar sus productos y promocionar su negocio.",
 
@@ -409,7 +450,7 @@ const configuracion = {
   // Para ELIMINAR un modelo: borra su bloque { ... } completo.
   //
   // "capas" es lo que permite que la bolsa cambie de color al pulsar
-  // un color. Necesitas 3 imágenes PNG (con fondo TRANSPARENTE) del
+  // un color. Necesitas 2 imágenes PNG (con fondo TRANSPARENTE) del
   // mismo tamaño, recortadas exactamente igual, una encima de otra
   // (ya NO se usa una foto de catálogo: la bolsa se pinta directamente
   // con el color, empezando con el primer color de la lista):
@@ -421,13 +462,31 @@ const configuracion = {
   //   transparencia -> brillos, sombras y reflejos de la bolsa, en un
   //                     PNG transparente, para que se sigan viendo
   //                     encima del color.
-  //   asa           -> el asa/mango de la bolsa (y cualquier parte que
-  //                     NUNCA deba cambiar de color), en PNG
-  //                     transparente, para que quede siempre encima.
   //
-  // Si todavía no tienes "mascara", deja las 3 vacías ("") y la
+  // Si todavía no tienes "mascara", deja las 2 vacías ("") y la
   // tarjeta mostrará un espacio de "[COLOCAR FOTO AQUÍ]" mientras
   // preparas las imágenes.
+  //
+  // "medidas" son las medidas que el cliente puede elegir para este
+  // modelo (por ejemplo Chica, Mediana, Grande). Cada medida tiene:
+  //   clave -> lo que se muestra en el botón chico: "CH", "M" o "G".
+  //   nombre -> el nombre completo de la medida (se usa en WhatsApp).
+  //   asa   -> el asa/mango de la bolsa PARA ESA MEDIDA (y cualquier
+  //            parte que NUNCA deba cambiar de color), en PNG
+  //            transparente. Cada medida normalmente trae impresas
+  //            SUS PROPIAS medidas/dimensiones sobre esta pieza, así
+  //            que cada una necesita su propia imagen de asa, del
+  //            mismo tamaño y recorte que "mascara" y "transparencia".
+  //   precio -> el precio por pieza PARA ESA MEDIDA (ej: "22"). Cada
+  //             medida puede tener su propio precio; al cambiar de
+  //             medida en la tarjeta, el precio mostrado se actualiza
+  //             automáticamente al de la medida elegida.
+  // Al elegir una medida en la tarjeta, la imagen del asa y el precio
+  // cambian, y se abre una vista para elegir los colores y cotizar ese
+  // modelo con esa medida. Si un modelo NO necesita selector de medidas,
+  // simplemente borra la propiedad "medidas" completa, agrega "asa" dentro
+  // de "capas" como antes (una sola imagen de asa fija), y usa "precioDesde"
+  // (un solo precio para todo el modelo).
   //
   // "colores" es una lista de { hex, nombre }: "hex" es el color que
   // se pinta y "nombre" es lo que se muestra y se manda por WhatsApp.
@@ -441,19 +500,22 @@ const configuracion = {
   // -----------------------------------------------------------------
   productos: [
     {
-      nombre: "Grande Clasica",
+      nombre: "Clásica",
       descripcion: "Bolsa resistente ideal para tiendas de abarrotes y mercados.",
       capas: {
-        mascara: "https://i.imgur.com/VpJ8o71.png",
-        transparencia: "https://i.imgur.com/JM6NU9B.png",
-        asa: "https://i.imgur.com/2cb2BsW.png"
+        mascara: "https://i.imgur.com/HQ14IQT.png",
+        transparencia: "https://i.imgur.com/LpLmcZQ.png"
       },
+      medidas: [
+        { clave: "M", nombre: "Mediana", asa: "https://i.imgur.com/aGD0WQN.png", precio: "25" },
+        { clave: "G", nombre: "Grande", asa: "https://i.imgur.com/lhlgvKe.png", precio: "27" }
+      ],
       colores: [
         { hex: "#b81414", nombre: "Rojo" },
         { hex: "#22409A", nombre: "A.Rey" },
         { hex: "#008000", nombre: "V.Bandera" },
         { hex: "#e83375", nombre: "Fiusha" },
-        { hex: "#B38CDC", nombre: "Lila" },
+        { hex: "#A88BD6", nombre: "Lila" },
         { hex: "#0076b6", nombre: "Panam" },
         { hex: "#89d631", nombre: "Verde Manzana" },
         { hex: "#E6AB00", nombre: "Amarillo Mango" },
@@ -461,61 +523,31 @@ const configuracion = {
         { hex: "#89F336", nombre: "Verde Limón" },
         { hex: "#fdfe02", nombre: "Amarillo Canario" },
         { hex: "#E5679B", nombre: "Rosa Neón" },
-        { hex: "#fc4b08", nombre: "Naranja Neón" },
+        { hex: "#ff3300", nombre: "Naranja Neón" },
         { hex: "#de6749", nombre: "Naranja Mandarina" },
         { hex: "#FFC5D3", nombre: "Rosa Pastel" },
-        { hex: "#F8F8FF", nombre: "Blanco" },
+        { hex: "#f5f5f5", nombre: "Blanco" },
         { hex: "#341539", nombre: "Uva" },
-        { hex: "#00fff0", nombre: "Aqua" },
         { hex: "#722F37", nombre: "Vino" },
-        { hex: "#e2cbb0", nombre: "Beige" }
+        { hex: "#e2cbb0", nombre: "Beige" },
+        { hex: "#1B004B", nombre: "Morado" }
       ],
       pedidoMinimo: 50,
       precioDesde: "27",
-      whatsappTexto: "Hola, quiero cotizar el Modelo Grande Clasica."
+      whatsappTexto: "¡Hola J&L!, quiero cotizar el Modelo Clásica."
     },
     {
-      nombre: "Mediana Clasica",
+      nombre: "Vertical",
       descripcion: "Diseño reforzado, perfecta para cremerías y jarcerías.",
       capas: {
-        mascara: "https://i.imgur.com/2Z6EpgA.png",
-        transparencia: "https://i.imgur.com/AdWYnWW.png",
-        asa: "https://i.imgur.com/tgTqDBJ.png"
+        mascara: "https://i.imgur.com/yPpbF0H.png",
+        transparencia: "https://i.imgur.com/sP83WhQ.png"
       },
-      colores: [
-        { hex: "#22409A", nombre: "A.Rey" },
-        { hex: "#b81414", nombre: "Rojo" },
-        { hex: "#008000", nombre: "V.Bandera" },
-        { hex: "#e83375", nombre: "Fiusha" },
-        { hex: "#B38CDC", nombre: "Lila" },
-        { hex: "#0076b6", nombre: "Panam" },
-        { hex: "#89d631", nombre: "Verde Manzana" },
-        { hex: "#E6AB00", nombre: "Amarillo Mango" },
-        { hex: "#1B1B1B", nombre: "Negro" },
-        { hex: "#89F336", nombre: "Verde Limón" },
-        { hex: "#fdfe02", nombre: "Amarillo Canario" },
-        { hex: "#E5679B", nombre: "Rosa Neón" },
-        { hex: "#fc4b08", nombre: "Naranja Neón" },
-        { hex: "#de6749", nombre: "Naranja Mandarina" },
-        { hex: "#FFC5D3", nombre: "Rosa Pastel" },
-        { hex: "#FFFFFF", nombre: "Blanco" },
-        { hex: "341539", nombre: "Uva" },
-        { hex: "#00fff0", nombre: "Aqua" },
-        { hex: "#722F37", nombre: "Vino" },
-        { hex: "#e2cbb0", nombre: "Beige" }
+      medidas: [
+        { clave: "CH", nombre: "Chica", asa: "https://i.ibb.co/kTstK8D/CH-Asa-y-Medidas.png", precio: "25" },
+        { clave: "M", nombre: "Mediana", asa: "https://i.imgur.com/qdpaTPl.png", precio: "25" },
+        { clave: "G", nombre: "Grande", asa: "https://i.imgur.com/szDpSAJ.png", precio: "27" }
       ],
-      pedidoMinimo: 50,
-      precioDesde: "25",
-      whatsappTexto: "Hola, quiero cotizar el Modelo Mediana Clasica."
-    },
-    {
-      nombre: "Grande Vertical",
-      descripcion: "Diseño reforzado, perfecta para cremerías y jarcerías.",
-      capas: {
-        mascara: "https://i.imgur.com/5WLI4YF.png",
-        transparencia: "https://i.imgur.com/OqRioZ5.png",
-        asa: "https://i.imgur.com/XMKZCeJ.png"
-      },
       colores: [
         { hex: "#008000", nombre: "V.Bandera" },
         { hex: "#b81414", nombre: "Rojo" },
@@ -532,25 +564,27 @@ const configuracion = {
         { hex: "#fc4b08", nombre: "Naranja Neón" },
         { hex: "#de6749", nombre: "Naranja Mandarina" },
         { hex: "#FFC5D3", nombre: "Rosa Pastel" },
-        { hex: "#F8F8FF", nombre: "Blanco" },
-        { hex: "341539", nombre: "Uva" },
-        { hex: "#00fff0", nombre: "Aqua" },
+        { hex: "#f5f5f5", nombre: "Blanco" },
+        { hex: "#341539", nombre: "Uva" },
         { hex: "#722F37", nombre: "Vino" },
         { hex: "#e2cbb0", nombre: "Beige" }
       ],
       pedidoMinimo: 50,
       precioDesde: "27",
-      whatsappTexto: "Hola, quiero cotizar el Modelo Grande Vertical."
+      whatsappTexto: "¡Hola J&L!, quiero cotizar el Modelo Vertical."
     },
 
     {
-      nombre: "Mediana Vertical",
+      nombre: "Redonda",
       descripcion: "Tamaño amplio, ideal para semillerías y productos de limpieza.",
       capas: {
-        mascara: "https://i.imgur.com/wx4v8B1.png",
-        transparencia: "https://i.imgur.com/q6H4uFo.png",
-        asa: "https://i.imgur.com/Sne6bT8.png"
+        mascara: "https://i.imgur.com/P776Bd7.png",
+        transparencia: "https://i.imgur.com/Y9s4emk.png"
       },
+      medidas: [
+        { clave: "M", nombre: "Mediana", asa: "https://i.imgur.com/Dlbypyz.png", precio: "27" },
+        { clave: "G", nombre: "Grande", asa: "https://i.imgur.com/wqse0C7.png", precio: "29" }
+      ],
       colores: [
         { hex: "#e83375", nombre: "Fiusha" },
         { hex: "#b81414", nombre: "Rojo" },
@@ -567,15 +601,14 @@ const configuracion = {
         { hex: "#fc4b08", nombre: "Naranja Neón" },
         { hex: "#de6749", nombre: "Naranja Mandarina" },
         { hex: "#FFC5D3", nombre: "Rosa Pastel" },
-        { hex: "#FFFFFF", nombre: "Blanco" },
-        { hex: "341539", nombre: "Uva" },
-        { hex: "#00fff0", nombre: "Aqua" },
+        { hex: "#f5f5f5", nombre: "Blanco" },
+        { hex: "#341539", nombre: "Uva" },
         { hex: "#722F37", nombre: "Vino" },
         { hex: "#e2cbb0", nombre: "Beige" }
       ],
       pedidoMinimo: 50,
-      precioDesde: "25",
-      whatsappTexto: "Hola, quiero cotizar el Modelo Mediana Vertical."
+      precioDesde: "27",
+      whatsappTexto: "¡Hola J&L!, quiero cotizar el Modelo Redonda."
     }
   ],
 
@@ -916,6 +949,30 @@ function pintarTextosBasicos(){
   }
 }
 
+function obtenerMedidaPorClave(producto, clave){
+  return (producto.medidas || []).find(m => m.clave === clave);
+}
+
+// Devuelve la URL del asa que corresponde a la medida elegida actualmente
+// (o al asa fija de "capas.asa" si el modelo no usa selector de medidas).
+function obtenerAsaActual(producto){
+  if(producto.medidas && producto.medidas.length){
+    const medida = obtenerMedidaPorClave(producto, producto._medidaSeleccionada) || producto.medidas[0];
+    return medida ? medida.asa : null;
+  }
+  return (producto.capas || {}).asa || null;
+}
+
+// Devuelve el precio por pieza que corresponde a la medida elegida
+// actualmente (o "precioDesde" si el modelo no usa selector de medidas).
+function obtenerPrecioActual(producto){
+  if(producto.medidas && producto.medidas.length){
+    const medida = obtenerMedidaPorClave(producto, producto._medidaSeleccionada) || producto.medidas[0];
+    return medida ? medida.precio : producto.precioDesde;
+  }
+  return producto.precioDesde;
+}
+
 function crearVisorProducto(producto){
   const visor = document.createElement('div');
   visor.className = 'visor-producto';
@@ -946,16 +1003,176 @@ function crearVisorProducto(producto){
     visor.appendChild(capaTransparencia);
   }
 
-  // Capa: asa/mango, siempre encima y nunca cambia de color (opcional)
-  if(capas.asa){
+  // Capa: asa/mango, siempre encima y nunca cambia de color (opcional).
+  // Si el modelo tiene "medidas", el asa que se muestra es la de la
+  // medida elegida (por eso al cambiar de medida solo se actualiza el
+  // "src" de esta imagen, no el resto de la bolsa).
+  const urlAsa = obtenerAsaActual(producto);
+  if(urlAsa){
     const capaAsa = document.createElement('img');
-    capaAsa.src = capas.asa;
+    capaAsa.src = urlAsa;
     capaAsa.alt = '';
     capaAsa.className = 'capa-asa';
     visor.appendChild(capaAsa);
   }
 
   return visor;
+}
+
+// -----------------------------------------------------------------
+// SELECTOR DE MEDIDAS: al elegir una medida, solo se actualiza la
+// imagen del asa (en la tarjeta y en la vista de cotización si está
+// abierta para ese mismo producto). No abre ninguna ventana.
+// -----------------------------------------------------------------
+function marcarBotonMedidaActivo(contenedor, claveMedida){
+  if(!contenedor) return;
+  contenedor.querySelectorAll('.boton-medida').forEach(boton=>{
+    boton.classList.toggle('activo', boton.dataset.clave === claveMedida);
+  });
+}
+
+function aplicarMedida(producto, claveMedida){
+  const medida = obtenerMedidaPorClave(producto, claveMedida);
+  if(!medida) return;
+  producto._medidaSeleccionada = claveMedida;
+
+  // Actualiza el asa y el precio en la tarjeta del modelo
+  if(producto._tarjetaEl){
+    const asaTarjeta = producto._tarjetaEl.querySelector('.capa-asa');
+    if(asaTarjeta) asaTarjeta.src = medida.asa;
+    const precioTarjeta = producto._tarjetaEl.querySelector('.precio-valor');
+    if(precioTarjeta) precioTarjeta.textContent = medida.precio;
+    marcarBotonMedidaActivo(producto._tarjetaEl.querySelector('.selector-medidas'), claveMedida);
+  }
+
+  // Actualiza el asa y el precio en la vista de cotización, si está abierta para este producto
+  if(modalProductoActual === producto && modalOverlay){
+    const asaModal = modalOverlay.querySelector('.capa-asa');
+    if(asaModal) asaModal.src = medida.asa;
+    const precioModal = modalOverlay.querySelector('.modal-cotizar-precio .precio-valor');
+    if(precioModal) precioModal.textContent = medida.precio;
+    marcarBotonMedidaActivo(modalOverlay.querySelector('.modal-cotizar-medidas'), claveMedida);
+    actualizarSeleccionColoresModal(producto);
+  }
+}
+
+// -----------------------------------------------------------------
+// VISTA DE COTIZACIÓN: se abre al elegir una medida. Aquí el cliente
+// elige sus colores y presiona "Cotizar este modelo".
+// -----------------------------------------------------------------
+let modalOverlay = null;
+let modalProductoActual = null;
+
+function crearModalCotizarSiNoExiste(){
+  if(modalOverlay) return;
+  modalOverlay = document.createElement('div');
+  modalOverlay.className = 'modal-cotizar-overlay';
+  modalOverlay.innerHTML = `
+    <div class="modal-cotizar-contenido">
+      <button type="button" class="modal-cotizar-cerrar" aria-label="Cerrar">&times;</button>
+      <div class="modal-cotizar-visor"></div>
+      <div class="modal-cotizar-info">
+        <h3 class="modal-cotizar-nombre"></h3>
+        <div class="selector-medidas-wrap">
+          <span class="etiqueta-medidas">Medida:</span>
+          <div class="modal-cotizar-medidas selector-medidas"></div>
+        </div>
+        <p class="precio modal-cotizar-precio">Desde $<span class="precio-valor"></span> <small>por pieza</small></p>
+        <p class="modal-cotizar-etiqueta-colores">Elige tus colores:</p>
+        <div class="modal-cotizar-colores"></div>
+        <p class="color-seleccionado-texto modal-cotizar-texto-color"></p>
+        <a href="#" class="btn btn-oscuro btn-ancho modal-cotizar-btn" target="_blank" rel="noopener">Cotizar este modelo</a>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modalOverlay);
+
+  modalOverlay.addEventListener('click', (evento)=>{
+    if(evento.target === modalOverlay) cerrarModalCotizar();
+  });
+  modalOverlay.querySelector('.modal-cotizar-cerrar').addEventListener('click', cerrarModalCotizar);
+  document.addEventListener('keydown', (evento)=>{
+    if(evento.key === 'Escape') cerrarModalCotizar();
+  });
+}
+
+function abrirModalCotizar(producto){
+  crearModalCotizarSiNoExiste();
+  modalProductoActual = producto;
+
+  const contVisor = modalOverlay.querySelector('.modal-cotizar-visor');
+  contVisor.innerHTML = '';
+  contVisor.appendChild(crearVisorProducto(producto));
+
+  modalOverlay.querySelector('.modal-cotizar-nombre').textContent = producto.nombre;
+
+  const contMedidas = modalOverlay.querySelector('.modal-cotizar-medidas');
+  contMedidas.innerHTML = '';
+  if(producto.medidas && producto.medidas.length){
+    producto.medidas.forEach(medida=>{
+      const boton = document.createElement('button');
+      boton.type = 'button';
+      boton.className = 'boton-medida';
+      boton.dataset.clave = medida.clave;
+      boton.textContent = medida.clave;
+      boton.title = medida.nombre;
+      if(medida.clave === producto._medidaSeleccionada) boton.classList.add('activo');
+      boton.addEventListener('click', ()=> aplicarMedida(producto, medida.clave));
+      contMedidas.appendChild(boton);
+    });
+    contMedidas.parentElement.style.display = '';
+  } else {
+    contMedidas.parentElement.style.display = 'none';
+  }
+
+  const precioModalTexto = modalOverlay.querySelector('.modal-cotizar-precio .precio-valor');
+  if(precioModalTexto) precioModalTexto.textContent = obtenerPrecioActual(producto);
+
+  const contColores = modalOverlay.querySelector('.modal-cotizar-colores');
+  contColores.innerHTML = '';
+  producto.colores.forEach(color=>{
+    const boton = document.createElement('button');
+    boton.type = 'button';
+    boton.className = 'boton-color';
+    boton.dataset.hex = color.hex;
+    boton.title = color.nombre;
+    boton.style.background = color.hex;
+    boton.setAttribute('aria-label', `Color ${color.nombre}`);
+    boton.addEventListener('click', ()=> alternarColor(producto, color, producto._tarjetaEl));
+    contColores.appendChild(boton);
+  });
+
+  actualizarSeleccionColoresModal(producto);
+  modalOverlay.classList.add('visible');
+}
+
+function cerrarModalCotizar(){
+  if(modalOverlay) modalOverlay.classList.remove('visible');
+  modalProductoActual = null;
+}
+
+function actualizarSeleccionColoresModal(producto){
+  if(!modalOverlay || modalProductoActual !== producto) return;
+  const seleccionados = producto._coloresSeleccionados || [];
+
+  modalOverlay.querySelectorAll('.modal-cotizar-colores .boton-color').forEach(boton=>{
+    boton.classList.toggle('activo', seleccionados.some(c=>c.hex === boton.dataset.hex));
+  });
+
+  const texto = modalOverlay.querySelector('.modal-cotizar-texto-color');
+  if(texto){
+    texto.innerHTML = seleccionados.length
+      ? `Colores elegidos (${seleccionados.length}/${MAX_COLORES_SELECCIONABLES}): <strong>${seleccionados.map(c=>c.nombre).join(', ')}</strong>`
+      : `Elige hasta ${MAX_COLORES_SELECCIONABLES} colores`;
+  }
+
+  const boton = modalOverlay.querySelector('.modal-cotizar-btn');
+  if(boton){
+    const medida = obtenerMedidaPorClave(producto, producto._medidaSeleccionada);
+    const listaColores = seleccionados.length ? seleccionados.map(c=>c.nombre).join(', ') : 'sin especificar';
+    const nombreModelo = medida ? `${medida.nombre} ${producto.nombre}` : producto.nombre;
+    boton.href = enlaceWhatsApp(`¡Hola J&L!, Vengo de la pagina y quiero cotizar el siguiente modelo. \n\n${nombreModelo} \n\nColor(es): ${listaColores}.`);
+  }
 }
 
 // Límite de cuántos colores puede ELEGIR el cliente al mismo tiempo (no limita
@@ -1082,7 +1299,7 @@ function actualizarSeleccionColores(producto, tarjeta){
     const listaColores = seleccionados.length
       ? seleccionados.map(c=>c.nombre).join(', ')
       : 'sin especificar';
-    const mensaje = `${producto.whatsappTexto} Color(es): ${listaColores}.`;
+    const mensaje = `¡Hola J&L!, Vengo de la pagina y quiero cotizar el siguiente modelo. \n\n${producto.nombre} \n\nColor(es): ${listaColores}.`;
     enlaceCotizar.href = enlaceWhatsApp(mensaje);
   }
 }
@@ -1104,6 +1321,7 @@ function alternarColor(producto, color, tarjeta){
   }
 
   actualizarSeleccionColores(producto, tarjeta);
+  actualizarSeleccionColoresModal(producto);
 }
 
 function pintarProductos(){
@@ -1111,44 +1329,92 @@ function pintarProductos(){
   configuracion.productos.forEach(producto=>{
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta-producto';
+    producto._tarjetaEl = tarjeta;
+
+    const tieneMedidas = !!(producto.medidas && producto.medidas.length);
 
     // Aquí se muestran TODOS los colores que pusiste en la configuración
     // para este modelo (no hay límite de cuántos puedes ofrecer).
     const coloresDisponibles = producto.colores;
     producto._coloresSeleccionados = [];
 
-    const botonesColores = coloresDisponibles.map(color=>
-      `<button type="button" class="boton-color" data-hex="${color.hex}" title="${color.nombre}" style="background:${color.hex};" aria-label="Color ${color.nombre}"></button>`
-    ).join('');
+    if(tieneMedidas){
+      // ---- MODELO CON MEDIDAS (CH / M / G) ----
+      // La medida se elige aquí en la tarjeta y solo cambia el asa de
+      // la vista previa (no abre ninguna ventana). Para elegir colores
+      // y cotizar, el cliente usa el botón de abajo.
+      producto._medidaSeleccionada = producto.medidas[0].clave;
 
-    tarjeta.innerHTML = `
-      <div class="visor-producto-contenedor"></div>
-      <div class="tarjeta-producto-cuerpo">
-        <h3>${producto.nombre}</h3>
-        <p class="descripcion">${producto.descripcion}</p>
-        <button type="button" class="btn-vista-previa">Vista previa</button>
-        <div class="selector-colores oculto">${botonesColores}</div>
-        <p class="color-seleccionado-texto oculto"></p>
-        <p class="info-linea">Pedido mínimo: ${producto.pedidoMinimo} piezas</p>
-        <p class="precio">Desde $${producto.precioDesde} <small>por pieza</small></p>
-        <a href="#" class="btn btn-oscuro btn-ancho whatsapp-link-color" target="_blank" rel="noopener">Cotizar este modelo</a>
-      </div>
-    `;
+      tarjeta.innerHTML = `
+        <div class="visor-producto-contenedor"></div>
+        <div class="tarjeta-producto-cuerpo">
+          <h3>${producto.nombre}</h3>
+          <p class="descripcion">${producto.descripcion}</p>
+          <div class="selector-medidas-wrap">
+            <span class="etiqueta-medidas">Medida:</span>
+            <div class="selector-medidas"></div>
+          </div>
+          <p class="info-linea">Pedido mínimo: ${producto.pedidoMinimo} piezas</p>
+          <p class="precio">Desde $<span class="precio-valor">${obtenerPrecioActual(producto)}</span> <small>por pieza</small></p>
+          <button type="button" class="btn btn-oscuro btn-ancho btn-elegir-colores">Elegir colores y cotizar</button>
+        </div>
+      `;
+
+      const contenedorMedidas = tarjeta.querySelector('.selector-medidas');
+      producto.medidas.forEach(medida=>{
+        const boton = document.createElement('button');
+        boton.type = 'button';
+        boton.className = 'boton-medida';
+        boton.dataset.clave = medida.clave;
+        boton.textContent = medida.clave;
+        boton.title = medida.nombre;
+        boton.setAttribute('aria-label', `Medida ${medida.nombre}`);
+        if(medida.clave === producto._medidaSeleccionada) boton.classList.add('activo');
+        // Elegir la medida SOLO cambia el asa de la vista previa; no abre
+        // la vista de cotización.
+        boton.addEventListener('click', ()=> aplicarMedida(producto, medida.clave));
+        contenedorMedidas.appendChild(boton);
+      });
+
+      tarjeta.querySelector('.btn-elegir-colores').addEventListener('click', ()=>{
+        abrirModalCotizar(producto);
+      });
+
+    } else {
+      // ---- MODELO SIN MEDIDAS (comportamiento anterior) ----
+      const botonesColores = coloresDisponibles.map(color=>
+        `<button type="button" class="boton-color" data-hex="${color.hex}" title="${color.nombre}" style="background:${color.hex};" aria-label="Color ${color.nombre}"></button>`
+      ).join('');
+
+      tarjeta.innerHTML = `
+        <div class="visor-producto-contenedor"></div>
+        <div class="tarjeta-producto-cuerpo">
+          <h3>${producto.nombre}</h3>
+          <p class="descripcion">${producto.descripcion}</p>
+          <button type="button" class="btn-vista-previa">Vista previa</button>
+          <div class="selector-colores oculto">${botonesColores}</div>
+          <p class="color-seleccionado-texto oculto"></p>
+          <p class="info-linea">Pedido mínimo: ${producto.pedidoMinimo} piezas</p>
+          <p class="precio">Desde $${producto.precioDesde} <small>por pieza</small></p>
+          <a href="#" class="btn btn-oscuro btn-ancho whatsapp-link-color" target="_blank" rel="noopener">Cotizar este modelo</a>
+        </div>
+      `;
+
+      tarjeta.querySelectorAll('.boton-color').forEach(boton=>{
+        boton.addEventListener('click', ()=>{
+          const color = coloresDisponibles.find(c=>c.hex === boton.dataset.hex);
+          alternarColor(producto, color, tarjeta);
+        });
+      });
+
+      tarjeta.querySelector('.btn-vista-previa').addEventListener('click', (evento)=>{
+        alternarVistaPrevia(tarjeta, evento.currentTarget);
+      });
+    }
 
     const visor = crearVisorProducto(producto);
     tarjeta.querySelector('.visor-producto-contenedor').appendChild(visor);
     visor.addEventListener('click', ()=>abrirLightbox(visor));
-
-    tarjeta.querySelectorAll('.boton-color').forEach(boton=>{
-      boton.addEventListener('click', ()=>{
-        const color = coloresDisponibles.find(c=>c.hex === boton.dataset.hex);
-        alternarColor(producto, color, tarjeta);
-      });
-    });
-
-    tarjeta.querySelector('.btn-vista-previa').addEventListener('click', (evento)=>{
-      alternarVistaPrevia(tarjeta, evento.currentTarget);
-    });
 
     // Se pinta el primer color por defecto al cargar la página (como vista previa)
     if(coloresDisponibles.length){
